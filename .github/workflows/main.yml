@@ -17,8 +17,8 @@ jobs:
     - name: Jira TODO
       uses: atlassian/gajira-todo@v3
       with:
-        project: GA
-        issuetype: Task
+        project: JP
+        issuetype: Bug
         description: Created automatically via GitHub Actions
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
