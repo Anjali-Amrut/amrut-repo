@@ -3,7 +3,7 @@ name: Create Jira Issue on Push
 on: [push]
 
 jobs:
-  create-issue:
+  create-issue: 
     runs-on: ubuntu-latest
     steps:
     - name: Login to Jira
