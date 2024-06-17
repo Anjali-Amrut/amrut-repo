@@ -4,5 +4,5 @@
 <body>
 <h1>Jenkins GitHub integration</h1>
 <p>Welcome to GitHub</p>
-</body>
+</body> 
 </html>
