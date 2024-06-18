@@ -25,6 +25,9 @@ jobs:
               "project": {
                 "id": "10029"
               },
-              "summary": "${{ github.event.head_commit.message }}"
+              "summary": "${{ github.event.head_commit.message }}",
+              "reporter": {
+                "id": "712020%3A2b99e9f5-f651-48aa-b2a7-7a225bdf7004"
+              }
             }
           }'
