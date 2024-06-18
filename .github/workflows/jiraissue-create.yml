@@ -1,5 +1,5 @@
 name: Create Jira Issue on Push
-'on':
+'on': 
   - push
 jobs:
   create-issue:
