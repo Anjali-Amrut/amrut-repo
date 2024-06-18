@@ -6,6 +6,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      - name: Get commit message
+        id: get-commit-message
+        run: echo "COMMIT_MESSAGE=$(git log --format=%B -n 1 ${{ github.event.after }})" >> $GITHUB_ENV
       - name: Login to Jira 
         uses: atlassian/gajira-login@v3 
         env:
@@ -17,7 +20,7 @@ jobs:
         with:
           project: 'JP'
           issuetype: 'Bug'
-          summary: 'New issue from GitHub Actions'
+          summary: '${{ env.COMMIT_MESSAGE }}'
           description: 'This issue was created automatically via GitHub Actions.'
         env:
           GITHUB_TOKEN: '${{ github.token }}'
