@@ -30,6 +30,9 @@ jobs:
               "project":{
                 "id":"10029"
               },
-              "summary":"${{ env.COMMIT_MESSAGE }}"
+              "summary":"${{ env.COMMIT_MESSAGE }}",
+              "reporter": {
+                "id": "712020%3A2b99e9f5-f651-48aa-b2a7-7a225bdf7004"
+             }
             }
           }'
