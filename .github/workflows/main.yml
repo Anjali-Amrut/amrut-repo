@@ -8,8 +8,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2  
+        env:
+          JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+          JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
+          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
 
-      - name: Create Jira issue    
+      - name: Create Jira issue
         run: |
           curl --location '${{ secrets.JIRA_BASE_URL }}/rest/api/2/issue' \
           --header 'Content-Type:application/json' \
@@ -25,4 +29,4 @@ jobs:
               },
               "summary":"Main order flow broken"
             }
-          }
+          }'
