@@ -9,20 +9,20 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2  
 
-      - name: Create Jira issue    
+      - name: Create Jira Issue
         run: |
-          curl --location 'JIRA_BASE_URL/rest/api/2/issue' \
-          --header 'Content-Type:application/json' \
-          --header 'Authorization: Basic $(echo -n $JIRA_API_TOKEN | base64)' \
-          --data '{
-            "fields":{
-              "description":"Order entry fails when selecting supplier.",
-              "issuetype":{
-                "id":"10007"
-              },
-              "project":{
-                "id":"10029"
-              },
-              "summary":"Main order flow broken"
-            }
-          }'
+         curl --location "${{ secrets.JIRA_BASE_URL }}/rest/api/2/issue" \
+    --header 'Content-Type: application/json' \
+    --header 'Authorization: Basic ${{ secrets.JIRA_API_TOKEN }}' \
+      --data '{
+      "fields": {
+        "description": "Order entry fails when selecting supplier.",
+        "issuetype": {
+          "id": "10007"
+        },
+        "project": {
+          "id": "10029"
+        },
+        "summary": "Main order flow broken"
+      }
+    }'
