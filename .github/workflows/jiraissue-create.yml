@@ -7,6 +7,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+      - name: Get commit message
+        id: get-commit-message
+        run: echo "COMMIT_MESSAGE=$(git log --format=%B -n 1 ${{ github.event.after }})" >> $GITHUB_ENV
         env:
           JIRA_BASE_URL: '${{ secrets.JIRA_BASE_URL }}'
           JIRA_USER_EMAIL: '${{ secrets.JIRA_USER_EMAIL }}'
@@ -26,6 +29,6 @@ jobs:
               "project": {
                 "id": "10029"
               },
-              "summary": "${{ github.event.head_commit.message }}"
+              "summary": "${{ env.COMMIT_MESSAGE }}"
             }
           }'
