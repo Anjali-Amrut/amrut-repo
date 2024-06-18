@@ -1,0 +1,28 @@
+name: Create Jira Issue on Push
+'on':
+  - push
+jobs:
+  create-issue:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2  
+
+      - name: Create Jira issue    
+        run: |
+          curl --location '${{ secrets.JIRA_BASE_URL }}/rest/api/2/issue' \
+          --header 'Content-Type:application/json' \
+          --header 'Authorization:Basic YW5qYWxpLmphZGhhdkBhbXJ1dHNvZnR3YXJlLmNvbTpBVEFUVDN4RmZHRjA1YzdFbHY3LXI0VkFZTXk0LXllQlZyR1F0R0huTVFRY1hWdFZBR0R5THJiaHhUT01nUlBuVjZXY1NIeGpfQWtnWXEtT2ZBQkRRRlBTRGFrdTVYTF9xNG10UVBzWGpoWXllN3E2ZjVQV0ZpSmtzMzJBWXpZdmpYNS00SXkzYW1sSnlPTElGaXpDeldSem1OVnJRXzF6THZGNTJ5ZmU1YXp5TF9ZZTRkeHFsTDA9OEVBMzVEQjc=' \
+          --data '{
+            "fields":{
+              "description":"Order entry fails when selecting supplier.",
+              "issuetype":{
+                "id":"10007"
+              },
+              "project":{
+                "id":"10029"
+              },
+              "summary":"Main order flow broken"
+            }
+          }
