@@ -12,21 +12,24 @@ jobs:
           JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
           JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
           JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+      - name: Get commit message
+        id: get-commit-message
+        run: echo "COMMIT_MESSAGE=$(git log --format=%B -n 1 ${{ github.event.after }})" >> $GITHUB_ENV
 
       - name: Create Jira issue
         run: |
           curl --location '${{ secrets.JIRA_BASE_URL }}/rest/api/2/issue' \
           --header 'Content-Type:application/json' \
-          --header 'Authorization: Basic ${{ secrets.JIRA_TOKEN }}' \
+          --header 'Authorization:Basic YW5qYWxpLmphZGhhdkBhbXJ1dHNvZnR3YXJlLmNvbTpBVEFUVDN4RmZHRjA1YzdFbHY3LXI0VkFZTXk0LXllQlZyR1F0R0huTVFRY1hWdFZBR0R5THJiaHhUT01nUlBuVjZXY1NIeGpfQWtnWXEtT2ZBQkRRRlBTRGFrdTVYTF9xNG10UVBzWGpoWXllN3E2ZjVQV0ZpSmtzMzJBWXpZdmpYNS00SXkzYW1sSnlPTElGaXpDeldSem1OVnJRXzF6THZGNTJ5ZmU1YXp5TF9ZZTRkeHFsTDA9OEVBMzVEQjc=' \
           --data '{
             "fields":{
-              "description":"Order entry fails when selecting supplier.",
+              "description":"This issue is created by GitHub.",
               "issuetype":{
                 "id":"10007"
               },
               "project":{
                 "id":"10029"
               },
-              "summary":"Main order flow broken"
+              "summary":'${{ env.COMMIT_MESSAGE }}'
             }
           }'
