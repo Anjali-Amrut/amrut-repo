@@ -20,7 +20,7 @@ jobs:
         run: |
           curl --location '${{ secrets.JIRA_BASE_URL }}/rest/api/2/issue' \
           --header 'Content-Type:application/json' \
-          --header 'Authorization:Basic ${{ secrets.JIRA_API_TOKEN }}' \
+          --header 'Authorization:Basic YW5qYWxpLmphZGhhdkBhbXJ1dHNvZnR3YXJlLmNvbTpBVEFUVDN4RmZHRjA1YzdFbHY3LXI0VkFZTXk0LXllQlZyR1F0R0huTVFRY1hWdFZBR0R5THJiaHhUT01nUlBuVjZXY1NIeGpfQWtnWXEtT2ZBQkRRRlBTRGFrdTVYTF9xNG10UVBzWGpoWXllN3E2ZjVQV0ZpSmtzMzJBWXpZdmpYNS00SXkzYW1sSnlPTElGaXpDeldSem1OVnJRXzF6THZGNTJ5ZmU1YXp5TF9ZZTRkeHFsTDA9OEVBMzVEQjc=' \
           --data '{
             "fields":{
               "description":"This issue is created by GitHub.",
