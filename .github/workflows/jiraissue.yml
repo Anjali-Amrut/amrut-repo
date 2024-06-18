@@ -26,6 +26,6 @@ jobs:
               "project": {
                 "id": "10029"
               },
-              "summary": "Main order flow broken"
+              "summary": "${{ github.event.head_commit.message }}"
             }
           }'
