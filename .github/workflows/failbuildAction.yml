@@ -1,5 +1,4 @@
 name: Create Jira Issue on Build Failure
-
 on:
   workflow_run:
     workflows: ["ticket.yml"]
